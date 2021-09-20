@@ -4,7 +4,7 @@ from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from leads.models import Lead, Brokerage
+from leads.models import Lead, Broker
 from leads.producer import publish
 from leads.serializers import LeadSerializer
 
@@ -42,9 +42,9 @@ class LeadViewSet(viewsets.ViewSet):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-class BrokerageAPIView(APIView):
+class BrokerAPIView(APIView):
     def get(self, _):
-        brokerages = Brokerage.objects.all()
+        brokerages = Broker.objects.all()
         brokerage = random.choice(brokerages)
         return Response({
             'id': brokerage.id

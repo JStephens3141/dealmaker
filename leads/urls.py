@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from .views import LeadViewSet, BrokerageAPIView
+from .views import LeadViewSet, BrokerAPIView
 
 urlpatterns = [
     path('leads', LeadViewSet.as_view({
@@ -12,5 +12,5 @@ urlpatterns = [
         'put': 'update',
         'delete': 'destroy',
     })),
-    path('broker', BrokerageAPIView.as_view()),
+    path('broker', BrokerAPIView.as_view()),
 ]
