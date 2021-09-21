@@ -8,4 +8,4 @@ class Lead(models.Model):
     address = models.CharField(max_length=200)
     cellphone = models.CharField(max_length=10)
     propertiesShown = models.PositiveIntegerField(default=0)
-
+    
