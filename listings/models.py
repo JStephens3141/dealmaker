@@ -11,6 +11,8 @@ class listing(models.Model):
     square_feet = models.IntegerField(max_length=5)
     image = models.CharField(max_length=100)
     asking_price = models.IntegerField(max_length=8)
+    datetime_created = models.DateTimeField(auto_now_add=True)
+    datetime_modified = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.nickname
