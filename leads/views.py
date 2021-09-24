@@ -1,10 +1,6 @@
-import random
-
 from rest_framework import viewsets, status
 from rest_framework.response import Response
-from rest_framework.views import APIView
-
-from leads.models import Lead, Broker
+from leads.models import Lead
 from leads.producer import publish
 from leads.serializers import LeadSerializer
 
@@ -40,14 +36,3 @@ class LeadViewSet(viewsets.ViewSet):
         lead.delete()
         publish('lead_deleted', pk)
         return Response(status=status.HTTP_204_NO_CONTENT)
-
-
-class BrokerAPIView(APIView):
-    def get(self, _):
-        brokerages = Broker.objects.all()
-        brokerage = random.choice(brokerages)
-        return Response({
-            'id': brokerage.id
-        },
-            status=status.HTTP_200_OK
-        )

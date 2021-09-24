@@ -1,3 +1,17 @@
-from django.shortcuts import render
+import random
+from user_profile.models import Profile
+from rest_framework import response, status
+from rest_framework.views import APIView
 
-# Create your views here.
+# TODO: Limit resutls to is_broker attribute
+
+class ProfileAPIView(APIView):
+    def get(self, _):
+        profiles = Profile.objects.all()
+        profile = random.choice(profiles)
+        return response({
+            'id': profile.id
+        },
+            status=status.HTTP_200_OK
+        )
+
